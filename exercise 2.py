@@ -3,11 +3,11 @@ class SchoolClass:
     def __init__(self, teacher, subjects, students):
         # Проверяем, соответствуют ли условиям ограничениям и создаем объект
         if not isinstance(teacher, str) or len(teacher) > 100:
-            raise ValueError("Teacher name must be a string with a maximum of 100 characters.")
+            raise ValueError("Количество символов в имени руководителя не должно превышать 100 символов.")
         if not isinstance(subjects, list) or not all(isinstance(subject, str) for subject in subjects):
-            raise ValueError("Subjects must be a list of strings.")
+            raise ValueError("Темы должны быть представлены массивом.")
         if not isinstance(students, list) or not all(isinstance(student, str) for student in students):
-            raise ValueError("Students must be a list of strings.")
+            raise ValueError("Учащиеся должны быть представлены массивом.")
         self.teacher = teacher  # Задаем имя учителя
         self.subjects = list(set(subjects))  # Создаем список уникальных предметов
         self.students = list(set(students))  # Создаем список уникальных студентов
@@ -22,13 +22,13 @@ class SchoolClass:
 
     def __str__(self):
         # Метод для вывода значений свойств объекта в читаемом формате
-        return f"Teacher: {self.teacher}\nSubjects: {', '.join(self.subjects)}\nStudents: {', '.join(self.students)}"
+        return f"Учитель: {self.teacher}\nПредметы: {', '.join(self.subjects)}\nСтуденты: {', '.join(self.students)}"
 
 
 if __name__ == "__main__":
     # Создаем два экземпляра класса SchoolClass
-    class1 = SchoolClass("Иванов Иван", ["Математика", "Физика", "Химия", "Биология"], ["Петров Пётр", "Сидоров Иван", "Кузнецов Иван"])
-    class2 = SchoolClass("Сидорова Светлана", ["Литература", "Информатика", "История"], ["Петрова Мария", "Кузнецова Анастасия", "Сидорова Софья"])
+    class1 = SchoolClass("Иванов Иван", ["Математика", "Физика", "Информатика"], ["Петров Пётр", "Сидоров Сергей", "Соколов Клим"])
+    class2 = SchoolClass("Сидорова Мария", ["Русский язык", "История", "Литература"], ["Пупкин Антон", "Кузнецов Денис", "Лебедев Виктор"])
     class1.sort_subjects()
     class2.sort_subjects()
     class1.sort_students()
